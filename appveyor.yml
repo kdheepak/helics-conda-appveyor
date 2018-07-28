@@ -44,27 +44,17 @@ init:
 install:
 # Make sure the compiler is accessible
 - '"%VS140COMNTOOLS%\..\..\VC\vcvarsall.bat" %PLATFORM%'
-
-# Load the conda root environment, configure and install some packages
 - '"%CONDA%\Scripts\activate.bat"'
 - conda config --set always_yes yes --set changeps1 no
 - conda update -q conda
 - conda install conda-build anaconda-client
 # Show conda info for debugging
 - conda info -a
-
-# Set the version info from the git tag
 - set /P PROJECT_VERSION=%VERSION%
+- "%CMD_IN_ENV% conda build helics"
+- move %CONDA%\conda-bld .
 
 build: false
-
-test_script:
-  # Build the package
-  - "%CMD_IN_ENV% conda build helics"
-
-after_test:
-  # Copy the conda build to the home dir, such that it can be registerd as an artifact
-  - move %CONDA%\conda-bld .
 
 artifacts:
   # Files to be uploaded
