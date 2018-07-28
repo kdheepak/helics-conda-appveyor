@@ -11,6 +11,9 @@ environment:
     GITHUB_REPO_NAME: kdheepak/helics-conda
 
   matrix:
+    - PYTHON_VERSION: 2.7
+      CONDA: C:\Miniconda
+
     - PYTHON_VERSION: 3.6
       CONDA: C:\Miniconda36
 
@@ -55,7 +58,7 @@ install:
 - conda install conda-build anaconda-client
 # Show conda info for debugging
 - conda info -a
-- conda build helics
+- conda build helics -c QuantStack
 - move %CONDA%\conda-bld .
 
 build: false
