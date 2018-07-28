@@ -29,6 +29,11 @@ environment:
 version: '{build}'
 image: Visual Studio 2015
 
+notifications:
+
+  - provider: Email
+    on_build_status_changed: false
+
 # For testing only...
 #skip_non_tags: true
 
