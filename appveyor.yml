@@ -8,17 +8,17 @@ environment:
       secure: D5QloxGQFVPhLII0tmYb4B1w1vTlQ39iDILECrYivXOOly+amR8htXxabtMTZfD8
     PROJECT_NAME: helics
     PROJECT_VERSION: 1.2.1
-    GITHUB_REPO_NAME: GMLC-TDC/HELICS-src
+    GITHUB_REPO_NAME: kdheepak/helics-conda
 
   matrix:
-    - PYTHON_VERSION: 2.7
-      CONDA: C:\Miniconda
-
     - PYTHON_VERSION: 3.6
       CONDA: C:\Miniconda36
 
     - PYTHON_VERSION: 3.5
       CONDA: C:\Miniconda35
+
+    - PYTHON_VERSION: 2.7
+      CONDA: C:\Miniconda
 
 version: '{build}'
 image: Visual Studio 2015
@@ -74,19 +74,12 @@ on_success:
 # & anaconda $parameters 2>&1
 # Powershell should be called Powerhell!
 - ps:
-    if (($Env:APPVEYOR_REPO_TAG -eq "true") -and
-        ($Env:APPVEYOR_REPO_NAME -eq ${Env:GITHUB_REPO_NAME})) {
+    if (($Env:APPVEYOR_REPO_NAME -eq ${Env:GITHUB_REPO_NAME})) {
       $tar_glob = ".\conda-bld\win-*\${Env:PROJECT_NAME}-*.tar.bz2";
       Write-Host "tar_glob $tar_glob";
-      if ($Env:APPVEYOR_REPO_TAG_NAME -like "*a*") {
-        $anaconda_label = "alpha"
-      } elseif ($Env:APPVEYOR_REPO_TAG_NAME -like "*b*") {
-        $anaconda_label = "beta"
-      } else {
-        $anaconda_label = "main"
-      };
+      $anaconda_label = "main";
       Write-Host "anaconda_label $anaconda_label";
       $parameters = '-t', "$Env:ANACONDA_TOKEN", 'upload', "$tar_glob", '-l',
-                    "$anaconda_label", '--force', '--no-progress';
+                    "$anaconda_label", '--force';
       & cmd /c 'anaconda 2>&1' $parameters;
     }
