@@ -11,10 +11,6 @@ environment:
     GITHUB_REPO_NAME: kdheepak/helics-conda
 
   matrix:
-
-    - PYTHON_VERSION: 2.7
-      CONDA: C:\Miniconda
-
     - PYTHON_VERSION: 3.6
       CONDA: C:\Miniconda36
 
@@ -34,6 +30,7 @@ notifications:
 
 platform:
 - x64
+- x86
 
 branches:
   only:
