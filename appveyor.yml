@@ -23,9 +23,6 @@ environment:
     - PYTHON_VERSION: 3.5
       CONDA: C:\Miniconda35
 
-    - PYTHON_VERSION: 3.4
-      CONDA: C:\Miniconda34
-
 version: '{build}'
 image: Visual Studio 2015
 
@@ -38,7 +35,6 @@ notifications:
 #skip_non_tags: true
 
 platform:
-- x86
 - x64
 
 branches:
