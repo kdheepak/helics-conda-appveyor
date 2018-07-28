@@ -18,7 +18,7 @@ fi
 
 mkdir -p build && cd build
 cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS=$FLAGS ${BUILD_PYTHON} -DCMAKE_INSTALL_PREFIX=$PREFIX ../
-make -j $CPU_COUNT
+make
 make install
 
 cp -v ${PREFIX}/python/_helics.so ${SP_DIR}/
