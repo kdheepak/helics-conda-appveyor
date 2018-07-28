@@ -19,13 +19,12 @@ requirements:
   build:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - cmake
+    - cmake >=3.4.0
     - swig
     - ninja
     - python
   host:
     - python
-    - pip
     - boost-cpp
     - zeromq
   run:
