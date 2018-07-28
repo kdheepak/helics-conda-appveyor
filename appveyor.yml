@@ -11,14 +11,15 @@ environment:
     GITHUB_REPO_NAME: kdheepak/helics-conda
 
   matrix:
+
+    - PYTHON_VERSION: 2.7
+      CONDA: C:\Miniconda
+
     - PYTHON_VERSION: 3.6
       CONDA: C:\Miniconda36
 
     - PYTHON_VERSION: 3.5
       CONDA: C:\Miniconda35
-
-    - PYTHON_VERSION: 2.7
-      CONDA: C:\Miniconda
 
 version: '{build}'
 image: Visual Studio 2015
@@ -33,7 +34,6 @@ notifications:
 
 platform:
 - x64
-- x86
 
 branches:
   only:
