@@ -55,7 +55,7 @@ install:
 - conda install conda-build anaconda-client
 # Show conda info for debugging
 - conda info -a
-- conda build helics"
+- conda build helics
 - move %CONDA%\conda-bld .
 
 build: false
