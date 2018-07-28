@@ -11,26 +11,13 @@ environment:
     GITHUB_REPO_NAME: GMLC-TDC/HELICS-src
 
   matrix:
-    - PYTHON_VERSION: 2.7
-      CONDA: C:\Miniconda
-
-    - PYTHON_VERSION: 3.7
-      CONDA: C:\Miniconda37
-
     - PYTHON_VERSION: 3.6
       CONDA: C:\Miniconda36
-
-    - PYTHON_VERSION: 3.5
-      CONDA: C:\Miniconda35
-
-    - PYTHON_VERSION: 3.4
-      CONDA: C:\Miniconda34
 
 version: '{build}'
 image: Visual Studio 2015
 
 notifications:
-
   - provider: Email
     on_build_status_changed: false
 
@@ -38,7 +25,6 @@ notifications:
 #skip_non_tags: true
 
 platform:
-- x86
 - x64
 
 branches:
